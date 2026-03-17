@@ -1,35 +1,42 @@
 /**
- * HelloApp.java – A simple Java application that extends the functionality of
- * HelloAppUC1 by accepting a user's name as a command-line argument and displaying
- * a personalized greeting.
+ * HelloAppUC4.java - A simple Java application that greets multiple users by name
+ * if provided as command-line arguments, or defaults to greeting "World" if none
+ * are given.
  *
- * UC 1: Display "Hello World" – The application should display the message
- * "Hello World" to the console when executed.
+ * Greet Multiple Users - The application should accept multiple names as
+ * command-line arguments and display a personalized greeting for each user.
  *
- * UC 2: Display User Name – The application should accept a user's name as
- * a command-line argument and display a personalized greeting.
+ * Usage: java HelloAppUC4 [name1] [name2] ... [nameN]
+ * - If names are provided, it will display "Hello, [Name1], [Name2], ..."
+ * - If no names are provided, it will display "Hello, World!"
  *
  * @author Developer Name
- * @version 1.0
+ * @version 4.0
  * @since UC1
- */
-
-/**
- * Key Concepts of UC 2:
- * 1. Command-line Arguments: Accessing user input via args[] parameter
- * 2. String Concatenation: Combining strings using the + operator
- * 3. System.out.println(): Output to console
- * 4. Array Indexing: Accessing the first argument with args[0]
  */
 
 public class HelloApp {
 
     public static void main(String[] args) {
 
-        // Get the name from command-line argument
-        String name = args[0];
+        String name = "World";
 
-        // Print greeting
+        // If names are provided, combine them
+        if (args.length > 0) {
+
+            StringBuilder nameBuilder = new StringBuilder();
+
+            for (int i = 0; i < args.length; i++) {
+                nameBuilder.append(args[i]);
+
+                if (i < args.length - 1) {
+                    nameBuilder.append(", ");
+                }
+            }
+
+            name = nameBuilder.toString();
+        }
+
         System.out.println("Hello, " + name + "!");
     }
 }
